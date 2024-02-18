@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "ntwscan",
+    "shared",
+    "hack_shell"
+]

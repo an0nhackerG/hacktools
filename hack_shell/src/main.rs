@@ -22,17 +22,9 @@ pub mod buffer;
 pub mod hackshell;
 pub mod hcursor;
 pub mod history;
-pub mod logger;
-pub mod ntwscan;
-pub mod shared;
 use buffer::Buffer;
 use hackshell::Hackshell;
 use hcursor::Cursor;
-use ntwscan::ntws_main;
-use shared::{
-    BLUE_FG, GREEN_FG, LIGHT_BLUE_FG, LIGHT_MAGENTA_FG, LIGHT_RED_FG, MAGENTA_FG, RED_FG, RESET_FG,
-};
-
 fn calculate_lines(string_len: u16) -> u16 {
     let (width, _) = termion::terminal_size().unwrap();
     if string_len == 0 {
