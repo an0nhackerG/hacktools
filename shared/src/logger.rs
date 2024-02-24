@@ -16,7 +16,6 @@ pub enum LogType {
     Sucess,
 }
 
-use crate::shared::ModuleName;
 
 // Trait Logger will be implemented in all modules.
 pub trait Logger {

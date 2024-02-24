@@ -1,16 +1,12 @@
 use termion::cursor;
 
-/*
-    The structure Cursor store and modify the information about the cursor on the screen
-    like the X position and the Y position. All modules here change the information of the structure,
-    if you want to change the cursor position whitout updating this information, use directly the cursor::Goto.
-*/
 pub struct Cursor {
     pub x: u16,
     pub y: u16,
     pub max_x: u16,
     pub max_y: u16,
 }
+
 impl Cursor {
     pub fn new(x_in: u16, y_in: u16) -> Cursor {
         let (max_x, max_y) = termion::terminal_size().unwrap(); 

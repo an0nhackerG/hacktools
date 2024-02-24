@@ -42,8 +42,6 @@ impl Hackshell {
         }
     }
 
-    //Here we  acess directly cursor::Goto becouse we want to move the cursor but not update the cursor info in the structure Cursor.
-    // Write buffer differs from writing results on the screen, this module is about writing the input of the user on the stdout
     pub fn write_buffer(&mut self, stdout: &mut RawTerminal<Stdout>) {
         write!(
             stdout,
@@ -56,9 +54,6 @@ impl Hackshell {
         .unwrap();
     }
 
-    // Write_results differs from write_buffer, this module is about dropping the results in the stdout
-    // we actualy drop all the results in the result variable in the stdout, and in the final make the buffer
-    // ready to be writing in write_buffer module.
     pub fn write_results(&mut self, stdout: &mut RawTerminal<Stdout>, results: &str, lines_for_buffer: u16) {
 
         write!(
@@ -78,7 +73,6 @@ impl Hackshell {
         .unwrap();
     }
 
-    // the clear command itself, just clear all the screen
     pub fn clear(&mut self, stdout: &mut RawTerminal<Stdout>) {
         self.cursor.x = self.buffer.prefix_size;
         self.cursor.y = 1;
@@ -95,7 +89,6 @@ impl Hackshell {
         stdout.flush().unwrap();
     }
 
-    // Compare the input of the user with the commands available in the shell, if the input contains part of the commands, autocomplete it
     pub fn autocomplete(&self) -> Option<String> {
         let parsing: Vec<&str> = self.buffer.data.split_whitespace().collect();
         if parsing.is_empty() {
